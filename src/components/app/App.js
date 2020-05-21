@@ -12,7 +12,6 @@ import {usersList} from '../../constants'
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-NORMA
 
 function App() {
   return (
