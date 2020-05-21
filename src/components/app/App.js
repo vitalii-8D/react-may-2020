@@ -3,7 +3,7 @@ import React from 'react';
 import { Header } from '../header/HeaderFromLecture'
 import {Footer} from '../footer/Footer'
 
-import {UserCards} from "../user-card/UserCard";
+import {UserBox} from "../user-card/UserBox";
 import {usersList} from '../../constants'
 import {socialMediaIcons} from '../../constants'
 
@@ -21,7 +21,7 @@ function App() {
       <Header />
       <Footer social={socialMediaIcons}/>
       {/*  todo: здесь нужно использовать Footer по аналогии с Header */}
-      <UserCards users={usersList}/>
+      <UserBox users={usersList}/>
       {/*  todo: здесь нужно использовать UserCard по аналогии с Header, как пропсу user передать usersList[0]*/}
     </div>
   );

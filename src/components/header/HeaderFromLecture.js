@@ -3,11 +3,10 @@ import { links, user } from '../../constants';
 import Logo from '../../assets/react.png';
 
 import { UserInfo } from '../user-info/UserInfoFromLecture';
+import {UsersHoverList} from '../users-hover-menu/Users-hover-list';
+import {usersList} from '../../constants';
 
 import './Header.scss';
-
-import {UsersHoverList} from '../users-hover-menu/Users-hover-list'
-import {usersList} from '../../constants'
 
 export const Header = (props) => {
   console.log(links);
