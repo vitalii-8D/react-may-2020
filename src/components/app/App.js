@@ -12,8 +12,7 @@ import {usersList} from '../../constants'
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-Тут короче якась фігня
+NORMA
 
 function App() {
   return (
