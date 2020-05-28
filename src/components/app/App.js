@@ -91,7 +91,7 @@ class App extends Component {
             Sorting:
             <button onClick={this.onSortByAuthorClick}>By author</button>
             <button onClick={this.onSortByDefault}>By default</button>
-
+  
             <DropDown
                 options={sortingOptions}
                 onSelect={this.onSort}
