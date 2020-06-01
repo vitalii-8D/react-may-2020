@@ -74,6 +74,8 @@ class App extends Component {
     // todo 4) достать также в строке 92 из стейта selectedOption
     const { posts } = this.state;
 
+    console.log("APP render");
+
     return (
       <div className="App">
         <Header />
