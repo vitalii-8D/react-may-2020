@@ -37,6 +37,8 @@ export class PostPreview extends Component {
   };
 
   onPostSelect = (postId) => {
+    if (postId === this.state.selectedPost) return;
+
     this.setState({
       selectedPost: postId
     })

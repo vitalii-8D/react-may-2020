@@ -113,6 +113,7 @@ class App extends Component {
                   hasImage={index % 2 !== 0}
                   author={author}
                   comments={comments}
+                  withCommentsLoading
                 />;
               })
             }

@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 const CN = 'may-posts-menu';
 
 export class PostsMenuList extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   onSelect = (id) => {
     const { onSelect } = this.props;
