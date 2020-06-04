@@ -30,7 +30,7 @@ export class PostCard extends PureComponent {
         const {post, withCommentsLoading} = this.props;
 
         console.log('PostCard componentDidMount');
-        if (post && !withCommentsLoading) { // добавлена проверка withCommentsLoading нужно ли делать загрузку комментариев (чтоб в списке всех постов не загружать их)
+        if (post && withCommentsLoading) { // добавлена проверка withCommentsLoading нужно ли делать загрузку комментариев (чтоб в списке всех постов не загружать их)
             const {id} = post;
             id && this.loadComments(id);
         }
