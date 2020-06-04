@@ -50,7 +50,7 @@ export class PostCard extends PureComponent {
         //  todo т.е. isCommentsLoading и showComments станут true
         this.setState({
             isCommentsLoading: true,
-            // showComments: true
+            showComments: true
         })
 
         let response = await fetch(`https://gorest.co.in/public-api/comments?access-token=${accessToken}&post_id=${postId}`);
