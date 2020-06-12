@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import uniqueId from 'uniqid';
 
-import { Header } from '../header/HeaderFromLecture';
-import { Footer } from '../footer/Footer';
 import { PanelFromLecture } from '../panel/PanelFromLecture';
 import { PostPreview } from '../post-preview/PostPreview';
-import TestCard, { PostCard as Card } from '../post-card/PostCard';
+import Card from '../post-card/PostCard';
 import { allComments, postsList, usersList } from '../../constants';
 import AddPostForm from '../post-form/PostForm';
 import { DropDown } from '../dropdown/DropDown';
-import {UsersList} from '../users-list/UsersList';
+
 import AddUserForm from '../user-form/AddUserForm';
 
-import './App.scss';
+import './HomePage.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const sortingOptions = ['Sort By Default', 'Sort By Author'];
 
-class App extends Component {
+class HomePage extends Component {
   state = {
     posts: [...postsList],
     selectedOption: sortingOptions[0],
-    users: [...usersList]
+    users: usersList
   };
 
   onSort = (selectedOption) => {
@@ -85,44 +83,25 @@ class App extends Component {
     });
   };
 
-  // todo 1: добавить здесь функцию onUserAdd
-  //  она должна добавлять пользователя в список users в стейте
-  //  при добавлении пользователя ему нужно добавить пропертю id, можно по аналогии со строкой 82
-  onUserAdd = (user) => {
-    const maxId = this.state.users.reduce((acc, curr) => acc.id > curr.id ? acc : curr).id;
-    const id = (parseInt(maxId) + 1).toString();
-
-    console.log(this.state.users);
-
-    this.setState((prevState) => {
-      return {
-        users: [{...user, id}, ...prevState.users]
-      }
-    });
-  };
-
-
   render() {
     const { posts, selectedOption, users } = this.state;
-    console.log("state values");
+
     return (
       <div className="App">
-        <Header />
 
         <PanelFromLecture label="Users" >
-          <AddUserForm onUserAdd={this.onUserAdd}/>
-          <UsersList users={users}/>
+          <AddUserForm/>
         </PanelFromLecture>
 
         <PanelFromLecture label="test" >
           <PostPreview posts={posts} />
         </PanelFromLecture>
 
-        <PanelFromLecture label="Posts" isOpenByDefault>
+        <PanelFromLecture label="Posts">
           <div className="d-flex">
             Sorting:
-            <button onClick={this.onSortByAuthorClick}>By author</button>
-            <button onClick={this.onSortByDefault}>By default</button>
+            <button className="btn btn-outline-primary m-2" onClick={this.onSortByAuthorClick}>By author</button>
+            <button className="btn btn-outline-primary m-2" onClick={this.onSortByDefault}>By default</button>
 
             <DropDown
               onSelect={this.onSort}
@@ -136,7 +115,7 @@ class App extends Component {
 
             {
               posts.map((item, index) => {
-                const user = users.find(user => user.id === item.user_id);
+                const user = usersList.find(user => user.id === item.user_id);
                 const author = user ? `${user.first_name} ${user.last_name}` : '';
                 const comments = allComments.filter(comment => comment.post_id === item.id);
 
@@ -150,10 +129,9 @@ class App extends Component {
             }
           </div>
         </PanelFromLecture>
-        <Footer />
       </div>
     );
   }
 }
 
-export default App;
+export default HomePage;

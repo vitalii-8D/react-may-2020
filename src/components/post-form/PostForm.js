@@ -12,18 +12,6 @@ class PostForm extends Component {
   onTitleChange = (event) => {
     const title = event.target.value;
 
-    if (/\d+/.test(title)) {
-      this.setState({
-        warning: 'please don\'t put numbers '
-      });
-      return;
-    }
-
-    this.setState({
-      title,
-      warning: ''
-    });
-
     this.setState({
       title
     });
@@ -32,12 +20,12 @@ class PostForm extends Component {
   onBodyChange = (event) => {
     const body = event.target.value;
 
-/*    if (/\d+/.test(body)) {
+    if (/\d+/.test(body)) {
       this.setState({
         warning: 'please don\'t put numbers '
       });
       return;
-    }*/
+    }
 
     this.setState({
       body,
@@ -46,12 +34,13 @@ class PostForm extends Component {
   };
 
   onUserSelect = (event) => {
-    // debugger
+    debugger
+    console.log(event.target.value);
     const selectedIndex = event.target.selectedIndex;
 
     this.setState((prevState, props) => {
       return {
-        user_id: props.users[selectedIndex].id
+        user_id: props.users[selectedIndex].id,
       };
     });
 
@@ -62,28 +51,18 @@ class PostForm extends Component {
     // });
   };
 
-  // todo 2: добавить функцию onReset которая будет очищать форму
-  //  подумайте как лучше сделать зачистку данных, если они хранятся  в стейте
   onReset = () => {
     this.setState({
       title: '',
-      body: '',
-      user_id: this.props.users[1].id
+      body: ''
     });
-  }
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
 
     const { onAddPost } = this.props;
     const { title, body, user_id } = this.state;
-
-    if (!title || !body) {
-      this.setState({
-        warning: "please, write down some data"
-      })
-      return;
-    }
 
     const newPost = {
       title,
@@ -93,9 +72,9 @@ class PostForm extends Component {
 
     onAddPost && onAddPost(newPost);
 
-    // todo 2: добавить очистку формы с помощью вызова функции onReset
+
     this.onReset();
-  };
+ };
 
   renderUsersSelect = () => {
     const { users } = this.props;
@@ -105,20 +84,17 @@ class PostForm extends Component {
     const selectedFullName = `${selectedUser.first_name} ${selectedUser.last_name}`;
 
     return (
-      <div>
-        <select value={selectedFullName} onChange={this.onUserSelect}>
-          {
-            users.map(user => {
-              const fullName = `${user.first_name} ${user.last_name}`;
+      <select value={selectedFullName} onChange={this.onUserSelect}>
+        {
+          users.map(user => {
+            const fullName = `${user.first_name} ${user.last_name}`;
 
-              return (
-                  <option key={user.id} value={fullName}>{fullName}</option>
-              );
-            })
-          }
-        </select>
-        <button type="button" onClick={this.onReset}>Reset</button>
-      </div>
+            return (
+              <option key={user.id} value={fullName}>{fullName}</option>
+            );
+          })
+        }
+      </select>
     );
   };
 
@@ -154,8 +130,8 @@ class PostForm extends Component {
         {
           this.renderUsersSelect()
         }
-        {/* todo 2: добавить кнопку, по нажатию на которую будет вызываться метод onReset*/}
-        <div className="m-2">
+        <div className="form-group m-2">
+          <button type="button" className="btn btn-outline-secondary m-2" onClick={this.onReset}>Reset</button>
           <button type="submit" className="btn btn-primary m-2">Add post</button>
         </div>
       </form>
