@@ -16,6 +16,7 @@ import { PostPreview } from './components/post-preview/PostPreview';
 import { postsList, usersList } from './constants';
 import { UserCard } from './components/user-card/UserCard';
 import {UserPage} from './components/user-page/user-page'
+import {NotFoundPage} from './components/not-found-page/NotFoundPage'
 
 class App extends Component {
   render() {
@@ -67,11 +68,7 @@ class App extends Component {
 }
 
 export default App;
-// todo 1: вынести эту функцию в отдельную компоненту: сощздать папку, js файл
-
-// todo 1: вынести эту функцию в отдельную компоненту: сощздать папку, js файл
-const NotFoundPage = () => {
-  // todo 1: добавить кнопку навигации на back to home page
-  //  подумайте, как для этого надо изменить эту страницу
-  return <div>Page not found</div>
-};
+// +todo 1: вынести эту функцию в отдельную компоненту: сощздать папку, js файл
+// UserPage
+// ttodo 1: вынести эту функцию в отдельную компоненту: сощздать папку, js файл
+//  NotFoundPage
