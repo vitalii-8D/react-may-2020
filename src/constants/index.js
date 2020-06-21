@@ -1,4 +1,4 @@
-export const accessToken = 'Y-yix-b1YsL9UH_BoBcBHJOTogG6G63LzCyP';
+export const accessToken = 'fAbsFyoqXZ4oogqUorBiaUjBrrbhCznTGQNi';
 
 export const user = {
   firstName: 'Poison',

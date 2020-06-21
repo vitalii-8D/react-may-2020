@@ -14,7 +14,7 @@ const NotFoundPageComponent = (props) => {
         <div className='box'>
             <h3>Сори, братан</h3>
             <div>Тут походу нет ничего =(</div>
-            <button onClick={toHomePage}>Поискать еще</button>
+            <button onClick={toHomePage}>Искать еще раз</button>
         </div>
     </div>
 };

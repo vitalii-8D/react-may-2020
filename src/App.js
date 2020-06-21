@@ -17,6 +17,7 @@ import { postsList, usersList } from './constants';
 import { UserCard } from './components/user-card/UserCard';
 import {UserPage} from './components/user-page/user-page'
 import {NotFoundPage} from './components/not-found-page/NotFoundPage'
+import {PostsList} from './components/posts-list/PostsList'
 
 class App extends Component {
   render() {
@@ -38,10 +39,8 @@ class App extends Component {
                  }}
           />
 
-          {/*
-            todo 2: добавить роут "/posts", который покажет компонент PostsList
-          */}
-
+          {/*todo 2: добавить роут "/posts", который покажет компонент PostsList*/}
+          <Route path="/posts" component={PostsList} exact />
           {/*
             todo 3: добавить роут "/posts/:id", который покажет компонент PostDetailsPage
           */}
