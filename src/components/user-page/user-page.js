@@ -4,9 +4,9 @@ import { UserCard } from '../user-card/UserCard';
 
  const UserPageComponent = (props) => {
     const { match: { params: { userId } }, history, usersList } = props;
-    console.log(usersList)
-    console.log(userId)
+
     const user = usersList.find(item => item.id === userId);
+
     const toUsersList = () => {
         history.push('/users');
     };

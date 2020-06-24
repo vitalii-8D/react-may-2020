@@ -3,12 +3,14 @@ import React, { Component, PureComponent } from 'react';
 import { accessToken } from '../../constants';
 import { Comment } from '../comment/Comment';
 import DefaultImg from '../../assets/default-empty-img.png';
+import { Link, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import './PostCard.scss';
 
-class PostCard extends PureComponent {
+class PostCardComponent extends PureComponent {
   state = {
     comments: [],
-    isCommentsLoading: false,
+    isCommentsLoading: true,
     commentsLoaded: false,
     showComments: false,
     error: ''
@@ -18,7 +20,8 @@ class PostCard extends PureComponent {
     const { post, withCommentsLoading } = this.props;
 
     // console.log('PostCard componentDidMount');
-    if (post && withCommentsLoading) { // добавлена проверка withCommentsLoading нужно ли делать загрузку комментариев (чтоб в списке всех постов не загружать их)
+    if (post && withCommentsLoading) {
+      // добавлена проверка withCommentsLoading нужно ли делать загрузку комментариев (чтоб в списке всех постов не загружать их)
       const { id } = post;
       id && this.loadComments(id);
     }
@@ -78,8 +81,11 @@ class PostCard extends PureComponent {
   // }
 
   render() {
-    //todo 3 : достать ниже url из  props.match по аналогии с UserCard строка 7
-    const { post, hasImage, author = '', className = '' } = this.props;
+    //+todo 3 : достать ниже url из  props.match по аналогии с UserCard строка 7 , match: {url}
+    // console.log(this.props.match.url)
+
+    const { post, hasImage, author = '', className = ''} = this.props;
+    const {url} = this.props.match;
 
     if (!post) {
       console.log('post is not defined');
@@ -107,16 +113,16 @@ class PostCard extends PureComponent {
             </footer>
           </blockquote>
         </div>
+        {/* todo 3 : добавить ссылку Link на урлу с айди поста, где будут детали поста
+                    по аналогии с 24 строкой в UserCard
+                    рендерить линку только если id из пропсов-объекта match-объекта params не найдено (не существует)*/}
+        {/*{!this.props.match.params.id && <NavLink to={`${url}/${post.id}`} className='post-card-link'>Смотреть...</NavLink>}*/}
+        {!this.props.match.params.id && <NavLink to={`posts/${post.id}`} className='post-card-link'>Смотреть...</NavLink>}
 
         {
           <label onClick={this.onToggleComments} className="btn btn-link">{showComments ? 'Hide comments' : 'Show comments'}</label>
         }
         { !!error &&  <div>{error}</div> }
-
-        {/* todo 3 : добавить ссылку Link на урлу с айди поста, где будут детали поста
-                    по аналогии с 24 строкой в UserCard
-                    рендерить линку только если id из пропсов-объекта match-объекта params не найдено (не существует)
-        */}
 
         { showComments && !!comments.length && <label>Comments:</label> }
         { showComments && isCommentsLoading && <div>Loading...</div> }
@@ -136,5 +142,7 @@ class PostCard extends PureComponent {
   }
 }
 
-// todo 3: подвязать PostCard с помощью withRouter к роутеру по аналогии с UserCard
+// +todo 3: подвязать PostCard с помощью withRouter к роутеру по аналогии с UserCard
+
+export const PostCard = withRouter(PostCardComponent);
 export default PostCard;

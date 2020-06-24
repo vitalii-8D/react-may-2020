@@ -32,3 +32,12 @@
     font-size: 16px;
   }
 }
+
+.post-card-link {
+  display: inline-block;
+  border: 1px solid deeppink;
+  padding: 5px 10px;
+  margin: 0 auto 10px;
+  color: #111;
+  text-transform: uppercase;
+}

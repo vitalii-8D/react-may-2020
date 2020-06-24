@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { accessToken, usersList } from '../../constants';
-import PostCard from '../post-card/PostCard';
+import {PostCard} from '../post-card/PostCard';
 import { withRouter } from 'react-router';
 import './PostsList.scss'
 
@@ -60,15 +60,13 @@ class PostsListComponent extends Component {
   render() {
     // +todo 2: достать также лоадинг индикатор из стейта
     const { posts, isPostsLoading, loadEror } = this.state;
-    console.log(isPostsLoading);
-    console.log(loadEror);
+
     return (
       <div>
         <h2 className='posts-header'>Posts page</h2>
 
         {/* +todo 2: ниже добавить проверку если сейчас идет загрука то показываем лоадинг индикатор (как в задании 7)
-                    если загрузка не идет то показываем список постов
-        */}
+                    если загрузка не идет то показываем список постов*/}
         {
           isPostsLoading && (<div className='loading-indicator'>
             <div className="loader">Loading...</div>

@@ -5,7 +5,8 @@ import './UserCard.scss';
 
 function UserCardComponent(props) {
   const { user, location, match: {url} } = props;
-
+console.log('UsersCard Propses')
+console.log(props)
   if (!user) return null;
 
   const { first_name, last_name, email, address, _links: { avatar } = {} } = user;
