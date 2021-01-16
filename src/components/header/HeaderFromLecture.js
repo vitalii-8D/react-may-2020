@@ -32,8 +32,9 @@ export const Header = (props) => {
               </div>
 
               <button className={`btn btn-primary ${isDarkTheme && 'dark'}`} onClick={toggleTheme}>Dark mode: {isDarkTheme ? 'on' : 'off'}</button>
-              {/* todo не передавать тут пользователя как пропсу */}
-              <UserInfo user={user} />
+              {/* to+do не передавать тут пользователя как пропсу */}
+              <UserInfo/>
+              {/*<UserInfo user={user} />*/}
             </div>
           )
         }

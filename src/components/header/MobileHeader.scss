@@ -1,0 +1,10 @@
+.side-panel {
+  position: absolute;
+  top: 0px;
+  left: -100px;
+
+  transition: left .5s linear;
+}
+.side-panel.active {
+  left: 60px;
+}

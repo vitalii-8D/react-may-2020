@@ -100,8 +100,8 @@ class HomePage extends Component {
   };
 
   onInc = () => {
-    const { increment } = this.props;
-    increment();
+    const { inc } = this.props;
+    inc();
     // appStore.dispatch({
     //   type: INCREMENT,
     //   payload: 3
@@ -109,8 +109,8 @@ class HomePage extends Component {
   };
 
   onDec = () => {
-    const { decrement } = this.props;
-    decrement();
+    const { dec } = this.props;
+    dec();
     // appStore.dispatch(dec());
   };
 
